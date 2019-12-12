@@ -11,7 +11,7 @@ use yii\web\IdentityInterface;
  * @property string $username
  * @property string $nama_lengkap
  * @property string $password
- * @property string $authkey
+ * @property string $authKey
  * @property string $accesToken
  * @property string $email
  * @property string $foto
@@ -36,10 +36,10 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['id_admin', 'username', 'nama_lengkap', 'password', 'authkey', 'accesToken', 'email', 'foto', 'createdAt', 'updatedAt'], 'required'],
+            [['id_admin', 'username', 'nama_lengkap', 'password', 'authKey', 'accesToken', 'email', 'foto', 'createdAt', 'updatedAt'], 'required'],
             [['id_admin'], 'integer'],
             [['createdAt', 'updatedAt'], 'safe'],
-            [['username', 'nama_lengkap', 'authkey', 'accesToken', 'email', 'foto'], 'string', 'max' => 50],
+            [['username', 'nama_lengkap', 'authKey', 'accesToken', 'email', 'foto'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 255],
             [['id_admin'], 'unique'],
         ];
@@ -55,7 +55,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
             'username' => 'Username',
             'nama_lengkap' => 'Nama Lengkap',
             'password' => 'Password',
-            'authkey' => 'Authkey',
+            'authKey' => 'AuthKey',
             'accesToken' => 'Acces Token',
             'email' => 'Email',
             'foto' => 'Foto',

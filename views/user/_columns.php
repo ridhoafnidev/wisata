@@ -10,26 +10,34 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
+    /*
         [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'id_user',
     ],
+    */
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'username',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'nama_lengkap',
+        'attribute'=>'nama_awal',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'nama_akhir',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'email',
     ],
+    /*
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'password',
     ],
+    */
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'nomor_hp',

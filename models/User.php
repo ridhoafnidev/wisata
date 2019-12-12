@@ -8,15 +8,16 @@ use Yii;
  * This is the model class for table "tb_user".
  *
  * @property int $id_user
+ * @property string $unique_id
  * @property string $username
- * @property string $nama_lengkap
+ * @property string $nama_awal
+ * @property string $nama_akhir
  * @property string $email
  * @property string $password
+ * @property string $salt
  * @property int $nomor_hp
  * @property string $alamat
- *
- * @property TbAskQue[] $tbAskQues
- * @property TbKegiatan[] $tbKegiatans
+ * @property string|null $restore_id
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -34,11 +35,12 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'username', 'nama_lengkap', 'email', 'password', 'nomor_hp', 'alamat', 'createdAt', 'updateAt'], 'required'],
-            [['id_user', 'nomor_hp'], 'integer'],
-            [['username', 'nama_lengkap', 'email', 'alamat'], 'string', 'max' => 50],
-            [['password'], 'string', 'max' => 255],
-            [['id_user'], 'unique'],
+            [['unique_id', 'username', 'nama_awal', 'nama_akhir', 'email', 'password', 'salt', 'nomor_hp', 'alamat'], 'required'],
+            [['nomor_hp'], 'integer'],
+            [['unique_id'], 'string', 'max' => 23],
+            [['username', 'nama_awal', 'nama_akhir', 'email', 'alamat'], 'string', 'max' => 50],
+            [['password', 'restore_id'], 'string', 'max' => 255],
+            [['salt'], 'string', 'max' => 10],
         ];
     }
 
@@ -49,28 +51,16 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id_user' => 'Id User',
+            'unique_id' => 'Unique ID',
             'username' => 'Username',
-            'nama_lengkap' => 'Nama Lengkap',
+            'nama_awal' => 'Nama Awal',
+            'nama_akhir' => 'Nama Akhir',
             'email' => 'Email',
             'password' => 'Password',
+            'salt' => 'Salt',
             'nomor_hp' => 'Nomor Hp',
             'alamat' => 'Alamat',
+            'restore_id' => 'Restore ID',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTbAskQues()
-    {
-        return $this->hasMany(TbAskQue::className(), ['id_user' => 'id_user']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTbKegiatans()
-    {
-        return $this->hasMany(TbKegiatan::className(), ['id_user' => 'id_user']);
     }
 }

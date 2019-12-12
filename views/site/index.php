@@ -6,14 +6,14 @@ $this->title = 'Inventaris';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Selamat Datang!</h1>
+    <!-- <div class="jumbotron"> -->
+        <!-- <h1>Selamat Datang!</h1> -->
 
-        <p class="lead">Anda berada di PT. KUNANGO JANTAN CABANG PEKANBARU</p>
+        <!-- <p class="lead">Anda berada di PT. KUNANGO JANTAN CABANG PEKANBARU</p> -->
 
         <?php /* Html::a('Lihat Data Asset Inventaris', ['/laporan/laporan'], ['class'=>'btn btn-lg btn-success']) */ ?>
 
-    </div>
+    <!-- </div> -->
 
     <div class="body-content">
 

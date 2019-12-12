@@ -40,33 +40,45 @@ AppAsset::register($this);
         ],
     ]);
     // if ($level == "admin") {
-    //     echo Nav::widget([
-    //     'options' => ['class' => 'navbar-nav navbar-right'],
-    //     'items' => [
-    //         ['label' => 'Beranda', 'url' => ['/site/index']],
-    //         ['label' => 'Laporan',
-    //             'items' => [
-    //                  ['label' => 'Surat Masuk', 'url' => ['/laporan/surat-masuk'], 'linkOptions' => ['target'=>'_blank']],
-    //                  ['label' => 'Surat Keluar', 'url' => ['/laporan/surat-keluar'], 'linkOptions' => ['target'=>'_blank']],
-    //             ],
-    //         ],
-    //         ['label' => 'Surat Masuk', 'url' => ['/surat-masuk']],
-    //         ['label' => 'Surat Keluar', 'url' => ['/surat-keluar']],
-    //         ['label' => 'Data Pengguna', 'url' => ['/user']],
-    //         Yii::$app->user->isGuest ? (
-    //             ['label' => 'Login', 'url' => ['/site/login']]
-    //         ) : (
-    //             '<li>'
-    //             . Html::beginForm(['/site/logout'], 'post')
-    //             . Html::submitButton(
-    //                 'Logout (' . Yii::$app->user->identity->nama_pengguna . ')',
-    //                 ['class' => 'btn btn-link logout']
-    //             )
-    //             . Html::endForm()
-    //             . '</li>'
-    //         )
-    //     ],
-    // ]);
+        echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+            ['label' => 'Beranda', 'url' => ['/site/index']],
+            
+            // ['label' => 'Laporan',
+            //     'items' => [
+            //          ['label' => 'Surat Masuk', 'url' => ['/laporan/surat-masuk'], 'linkOptions' => ['target'=>'_blank']],
+            //          ['label' => 'Surat Keluar', 'url' => ['/laporan/surat-keluar'], 'linkOptions' => ['target'=>'_blank']],
+            //     ],
+            // ],
+
+            ['label' => 'Doa', 'url' => ['/doa']],
+            ['label' => 'Kegiatan', 'url' => ['/kegiatan']],
+            ['label' => 'Larangan', 'url' => ['/larangan']],
+            ['label' => 'Materi', 'url' => ['/materi']],
+            ['label' => 'Pengguna', 'url' => ['/user']],
+            [
+                'label' => 'Asq & Que',
+                'url' => 'https://ridhoafnidev.freshchat.com',
+                'icon' => 'fa-list-alt',
+                'linkOptions' => [
+                'target' => '_blank',
+                ],
+            ],
+            Yii::$app->user->isGuest ? (
+                ['label' => 'Login', 'url' => ['/site/login']]
+            ) : (
+                '<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>'
+            )
+        ],
+    ]);
     NavBar::end();
     // }elseif($level == "kepala instansi"){
     //   echo Nav::widget([
@@ -105,7 +117,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; PT.KUNANGO JANTAN <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Haji dan Umroh <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
