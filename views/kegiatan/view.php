@@ -11,6 +11,10 @@ use yii\widgets\DetailView;
         'model' => $model,
         'attributes' => [
             'id_kegiatan',
+            'kloter',
+            'priode',
+            'tanggal_keberangkatan',
+            'tanggal_kepulangan',
             'judul_kegiatan',
             'deskripsi_kegiatan',
         ],

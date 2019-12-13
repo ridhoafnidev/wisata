@@ -11,25 +11,29 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php //$form->field($model, 'id_user')->textInput() ?>
+    <?php // $form->field($model, 'unique_id')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'kloter')->textInput(['maxlength' => true, 'type'=>'number']) ?>
+
+    <?= $form->field($model, 'priode')->textInput(['maxlength' => true, 'type'=>'number']) ?>
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nama_awal')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nama_awal')->textInput(['maxlength' => true, 'type' => 'date']) ?>
 
-    <?= $form->field($model, 'nama_akhir')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nama_akhir')->textInput(['maxlength' => true, 'type' => 'date']) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?php // $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'type' => 'password']) ?>
+
+    <?php // $form->field($model, 'salt')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'nomor_hp')->textInput() ?>
 
     <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?>
 
-    <?php // $form->field($model, 'createdAt')->textInput() ?>
-
-    <?php //$form->field($model, 'updateAt')->textInput() ?>
+    <?php // $form->field($model, 'restore_id')->textInput(['maxlength' => true]) ?>
 
   
 	<?php if (!Yii::$app->request->isAjax){ ?>

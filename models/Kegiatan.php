@@ -8,6 +8,10 @@ use Yii;
  * This is the model class for table "tb_kegiatan".
  *
  * @property int $id_kegiatan
+ * @property int $kloter
+ * @property int $priode
+ * @property string $tanggal_keberangkatan
+ * @property string $tanggal_kepulangan
  * @property string $judul_kegiatan
  * @property string $deskripsi_kegiatan
  */
@@ -27,7 +31,9 @@ class Kegiatan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['judul_kegiatan', 'deskripsi_kegiatan'], 'required'],
+            [['kloter', 'priode', 'tanggal_keberangkatan', 'tanggal_kepulangan', 'judul_kegiatan', 'deskripsi_kegiatan'], 'required'],
+            [['kloter', 'priode'], 'integer'],
+            [['tanggal_keberangkatan', 'tanggal_kepulangan'], 'safe'],
             [['judul_kegiatan'], 'string', 'max' => 50],
             [['deskripsi_kegiatan'], 'string', 'max' => 255],
         ];
@@ -40,6 +46,10 @@ class Kegiatan extends \yii\db\ActiveRecord
     {
         return [
             'id_kegiatan' => 'Id Kegiatan',
+            'kloter' => 'Kloter',
+            'priode' => 'Priode',
+            'tanggal_keberangkatan' => 'Tanggal Keberangkatan',
+            'tanggal_kepulangan' => 'Tanggal Kepulangan',
             'judul_kegiatan' => 'Judul Kegiatan',
             'deskripsi_kegiatan' => 'Deskripsi Kegiatan',
         ];

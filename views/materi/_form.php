@@ -19,6 +19,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'deskripsi_materi')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'link_youtube')->textInput(['maxlength' => true]) ?>
+
   
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">

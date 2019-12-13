@@ -27,6 +27,10 @@ return [
         'attribute'=>'deskripsi_materi',
     ],
     [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'link_youtube',
+    ],
+    [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,
         'vAlign'=>'middle',

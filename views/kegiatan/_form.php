@@ -11,7 +11,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php // $form->field($model, 'id_kegiatan')->textInput() ?>
+    <?= $form->field($model, 'kloter')->textInput(['maxlength' => true, 'type'=>'number']) ?>
+
+    <?= $form->field($model, 'priode')->textInput(['maxlength' => true, 'type'=>'number']) ?>
+
+    <?= $form->field($model, 'tanggal_keberangkatan')->textInput(['maxlength' => true, 'type'=>'date']) ?>
+
+    <?= $form->field($model, 'tanggal_kepulangan')->textInput(['maxlength' => true, 'type'=>'date']) ?>
 
     <?= $form->field($model, 'judul_kegiatan')->textInput(['maxlength' => true]) ?>
 

@@ -27,11 +27,9 @@ class Larangan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_larangan', 'judul_larangan', 'deskripsi_larangan'], 'required'],
-            [['id_larangan'], 'integer'],
+            [['judul_larangan', 'deskripsi_larangan'], 'required'],
             [['judul_larangan'], 'string', 'max' => 50],
             [['deskripsi_larangan'], 'string', 'max' => 255],
-            [['id_larangan'], 'unique'],
         ];
     }
 

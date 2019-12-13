@@ -19,7 +19,7 @@ class MateriSearch extends Materi
     {
         return [
             [['id_materi'], 'integer'],
-            [['jenis_materi', 'judul_materi', 'deskripsi_materi'], 'safe'],
+            [['jenis_materi', 'judul_materi', 'deskripsi_materi', 'link_youtube'], 'safe'],
         ];
     }
 
@@ -61,6 +61,7 @@ class MateriSearch extends Materi
 
         $query->andFilterWhere(['like', 'jenis_materi', $this->jenis_materi])
             ->andFilterWhere(['like', 'judul_materi', $this->judul_materi])
+            ->andFilterWhere(['like', 'link_youtube', $this->link_youtube])
             ->andFilterWhere(['like', 'deskripsi_materi', $this->deskripsi_materi]);
 
         return $dataProvider;

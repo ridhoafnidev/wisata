@@ -10,16 +10,14 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
-    /*
-        [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'id_user',
-    ],
-    */
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'username',
-    ],
+    //     [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'id_user',
+    // ],
+    // [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'unique_id',
+    // ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'nama_awal',
@@ -30,14 +28,36 @@ return [
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'email',
+        'attribute'=>'kloter',
     ],
-    /*
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'password',
+        'attribute'=>'priode',
     ],
-    */
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'username',
+    ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'nama_awal',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'nama_akhir',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'email',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'password',
+    // ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'salt',
+    // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'nomor_hp',
@@ -48,11 +68,7 @@ return [
     // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'createdAt',
-    // ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'updateAt',
+        // 'attribute'=>'restore_id',
     // ],
     [
         'class' => 'kartik\grid\ActionColumn',

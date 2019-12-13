@@ -14,6 +14,7 @@ use yii\widgets\DetailView;
             'jenis_materi',
             'judul_materi',
             'deskripsi_materi',
+            'link_youtube',
         ],
     ]) ?>
 

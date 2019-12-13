@@ -91,7 +91,7 @@ class KegiatanController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new Kegiatan",
+                    'title'=> "Tambah Kegiatan",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),

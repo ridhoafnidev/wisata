@@ -23,6 +23,23 @@ return [
         'attribute'=>'deskripsi_kegiatan',
     ],
     [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'kloter',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'priode',
+    ],
+    // [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'tanggal_keberangkatan',
+    // ],
+    // [
+    //     'class'=>'\kartik\grid\DataColumn',
+    //     'attribute'=>'tanggal_kepulangan',
+    // ],
+   
+    [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,
         'vAlign'=>'middle',

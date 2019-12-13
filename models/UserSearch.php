@@ -18,8 +18,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id_user', 'nomor_hp'], 'integer'],
-            [['username', 'nama_awal', 'nama_akhir', 'email', 'password', 'alamat'], 'safe'],
+            [['id_user', 'kloter', 'priode', 'nomor_hp'], 'integer'],
+            [['unique_id', 'username', 'nama_awal', 'nama_akhir', 'email', 'password', 'salt', 'alamat', 'restore_id'], 'safe'],
         ];
     }
 
@@ -57,15 +57,20 @@ class UserSearch extends User
 
         $query->andFilterWhere([
             'id_user' => $this->id_user,
+            'kloter' => $this->kloter,
+            'priode' => $this->priode,
             'nomor_hp' => $this->nomor_hp,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
+        $query->andFilterWhere(['like', 'unique_id', $this->unique_id])
+            ->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'nama_awal', $this->nama_awal])
             ->andFilterWhere(['like', 'nama_akhir', $this->nama_akhir])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'alamat', $this->alamat]);
+            ->andFilterWhere(['like', 'salt', $this->salt])
+            ->andFilterWhere(['like', 'alamat', $this->alamat])
+            ->andFilterWhere(['like', 'restore_id', $this->restore_id]);
 
         return $dataProvider;
     }

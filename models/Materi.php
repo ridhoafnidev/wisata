@@ -11,6 +11,7 @@ use Yii;
  * @property string $jenis_materi
  * @property string $judul_materi
  * @property string $deskripsi_materi
+ * @property string $link_youtube
  */
 class Materi extends \yii\db\ActiveRecord
 {
@@ -28,11 +29,10 @@ class Materi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_materi', 'jenis_materi', 'judul_materi', 'deskripsi_materi'], 'required'],
-            [['id_materi'], 'integer'],
+            [['jenis_materi', 'judul_materi', 'deskripsi_materi', 'link_youtube'], 'required'],
             [['jenis_materi', 'judul_materi'], 'string', 'max' => 50],
             [['deskripsi_materi'], 'string', 'max' => 225],
-            [['id_materi'], 'unique'],
+            [['link_youtube'], 'string', 'max' => 255],
         ];
     }
 
@@ -46,6 +46,7 @@ class Materi extends \yii\db\ActiveRecord
             'jenis_materi' => 'Jenis Materi',
             'judul_materi' => 'Judul Materi',
             'deskripsi_materi' => 'Deskripsi Materi',
+            'link_youtube' => 'Link Youtube',
         ];
     }
 }

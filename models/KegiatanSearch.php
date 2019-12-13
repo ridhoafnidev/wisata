@@ -18,8 +18,8 @@ class KegiatanSearch extends Kegiatan
     public function rules()
     {
         return [
-            [['id_kegiatan'], 'integer'],
-            [['judul_kegiatan', 'deskripsi_kegiatan'], 'safe'],
+            [['id_kegiatan', 'kloter', 'priode'], 'integer'],
+            [['tanggal_keberangkatan', 'tanggal_kepulangan', 'judul_kegiatan', 'deskripsi_kegiatan'], 'safe'],
         ];
     }
 
@@ -57,6 +57,10 @@ class KegiatanSearch extends Kegiatan
 
         $query->andFilterWhere([
             'id_kegiatan' => $this->id_kegiatan,
+            'kloter' => $this->kloter,
+            'priode' => $this->priode,
+            'tanggal_keberangkatan' => $this->tanggal_keberangkatan,
+            'tanggal_kepulangan' => $this->tanggal_kepulangan,
         ]);
 
         $query->andFilterWhere(['like', 'judul_kegiatan', $this->judul_kegiatan])
