@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-image: url('http://getwallpapers.com/wallpaper/full/d/6/2/1523391-razer-wallpaper-5760x1080-3840x1080-for-macbook.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 height: 100%;

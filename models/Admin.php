@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\web\IdentityInterface;
+
 /**
  * This is the model class for table "tb_admin".
  *
@@ -11,14 +12,12 @@ use yii\web\IdentityInterface;
  * @property string $username
  * @property string $nama_lengkap
  * @property string $password
- * @property string $authKey
+ * @property string $authkey
  * @property string $accesToken
  * @property string $email
  * @property string $foto
  * @property string $createdAt
  * @property string $updatedAt
- *
- * @property TbAskQue[] $tbAskQues
  */
 class Admin extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -36,12 +35,10 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['id_admin', 'username', 'nama_lengkap', 'password', 'authKey', 'accesToken', 'email', 'foto', 'createdAt', 'updatedAt'], 'required'],
-            [['id_admin'], 'integer'],
+            [['username', 'nama_lengkap', 'password', 'authkey', 'accesToken', 'email', 'foto', 'createdAt', 'updatedAt'], 'required'],
             [['createdAt', 'updatedAt'], 'safe'],
-            [['username', 'nama_lengkap', 'authKey', 'accesToken', 'email', 'foto'], 'string', 'max' => 50],
+            [['username', 'nama_lengkap', 'authkey', 'accesToken', 'email', 'foto'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 255],
-            [['id_admin'], 'unique'],
         ];
     }
 
@@ -55,21 +52,13 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
             'username' => 'Username',
             'nama_lengkap' => 'Nama Lengkap',
             'password' => 'Password',
-            'authKey' => 'AuthKey',
+            'authkey' => 'Authkey',
             'accesToken' => 'Acces Token',
             'email' => 'Email',
             'foto' => 'Foto',
             'createdAt' => 'Created At',
             'updatedAt' => 'Updated At',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTbAskQues()
-    {
-        return $this->hasMany(TbAskQue::className(), ['id_admin' => 'id_admin']);
     }
 
     
@@ -134,7 +123,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->authKey;
+        return $this->authkey;
     }
 
     /**
