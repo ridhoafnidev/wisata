@@ -25,7 +25,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\Admin', // User must implement the IdentityInterface
+            'identityClass' => 'app\models\User', // User must implement the IdentityInterface
             'enableAutoLogin' => true,
             // 'loginUrl' => ['user/login'],
             // ...
@@ -54,7 +54,7 @@ $config = [
             'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'baseUrl' => 'http://localhost/haji-umrah/'
+            'baseUrl' => 'http://localhost/wisata/'
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,

@@ -15,6 +15,7 @@ AppAsset::register($this);
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
+
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,107 +24,50 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head()  ?>
 </head>
+
 <body>
-<?php $this->beginBody() ?>
+    <?php $this->beginBody() ?>
+    <div id="wrapper">
 
-<?php 
-    //$level=Yii::$app->user->identity->level;
-?>
+        <!-- navbar -->
+        <?php include("navbar.php");  ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    // if ($level == "admin") {
-        echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Beranda', 'url' => ['/site/index']],
-            
-            // ['label' => 'Laporan',
-            //     'items' => [
-            //          ['label' => 'Surat Masuk', 'url' => ['/laporan/surat-masuk'], 'linkOptions' => ['target'=>'_blank']],
-            //          ['label' => 'Surat Keluar', 'url' => ['/laporan/surat-keluar'], 'linkOptions' => ['target'=>'_blank']],
-            //     ],
-            // ],
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
 
-            ['label' => 'Doa', 'url' => ['/doa']],
-            ['label' => 'Kegiatan', 'url' => ['/kegiatan']],
-            ['label' => 'Larangan', 'url' => ['/larangan']],
-            ['label' => 'Materi', 'url' => ['/materi']],
-            ['label' => 'Pengguna', 'url' => ['/user']],
-            [
-                'label' => 'Asq & Que',
-                'url' => 'https://ridhoafnidev.freshchat.com',
-                'icon' => 'fa-list-alt',
-                'linkOptions' => [
-                'target' => '_blank',
-                ],
-            ],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    // }elseif($level == "kepala instansi"){
-    //   echo Nav::widget([
-    //     'options' => ['class' => 'navbar-nav navbar-right'],
-    //     'items' => [
-    //         ['label' => 'Beranda', 'url' => ['/site/index']],
-    //         ['label' => 'Surat Masuk', 'url' => ['/surat-masuk']],
-    //         ['label' => 'Surat Keluar', 'url' => ['/surat-keluar']],
-    //         Yii::$app->user->isGuest ? (
-    //             ['label' => 'Login', 'url' => ['/site/login']]
-    //         ) : (
-    //             '<li>'
-    //             . Html::beginForm(['/site/logout'], 'post')
-    //             . Html::submitButton(
-    //                 'Logout (' . Yii::$app->user->identity->nama_pengguna . ')',
-    //                 ['class' => 'btn btn-link logout']
-    //             )
-    //             . Html::endForm()
-    //             . '</li>'
-    //         )
-    //     ],
-    // ]);
-    // NavBar::end();  
-    // }
-    
-    ?>
+                <!-- header -->
+                <?php include("header.php") ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+            </div>
+            <br>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2></h2>
+                    <ol class="breadcrumb">
+                        <?= Breadcrumbs::widget([
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                        ]) ?>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content">
+                <div class="row">
+
+                    <div class="col-lg-12">
+
+                        <?= $content ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer -->
+            <?php include("footer.php") ?>
+
+        </div>
     </div>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; Haji dan Umroh <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
-<?php $this->endBody() ?>
+    <?php $this->endBody() ?>
 </body>
+
 </html>
 <?php $this->endPage() ?>
