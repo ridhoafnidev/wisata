@@ -3,18 +3,18 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Galery;
-use app\models\GalerySearch;
+use app\models\Gallery;
+use app\models\GallerySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
-
+use yii\web\UploadedFile;
 /**
- * GaleryController implements the CRUD actions for Galery model.
+ * GalleryController implements the CRUD actions for Gallery model.
  */
-class GaleryController extends Controller
+class GalleryController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,12 +33,12 @@ class GaleryController extends Controller
     }
 
     /**
-     * Lists all Galery models.
+     * Lists all Gallery models.
      * @return mixed
      */
     public function actionIndex()
     {    
-        $searchModel = new GalerySearch();
+        $searchModel = new GallerySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -49,7 +49,7 @@ class GaleryController extends Controller
 
 
     /**
-     * Displays a single Galery model.
+     * Displays a single Gallery model.
      * @param integer $id
      * @return mixed
      */
@@ -59,7 +59,7 @@ class GaleryController extends Controller
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Galery #".$id,
+                    'title'=> "Gallery #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -74,7 +74,7 @@ class GaleryController extends Controller
     }
 
     /**
-     * Creates a new Galery model.
+     * Creates a new Gallery model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -82,7 +82,7 @@ class GaleryController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Galery();  
+        $model = new Gallery();  
 
         if($request->isAjax){
             /*
@@ -90,8 +90,8 @@ class GaleryController extends Controller
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
-                return [
-                    'title'=> "Create new Galery",
+                return [ 
+                    'title'=> "Create new Gallery",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -99,18 +99,26 @@ class GaleryController extends Controller
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
+            }else if($model->load($request->post())){
+                $model->gambar = UploadedFile::getInstance($model,'gambar');
+                if($model->gambar){
+                    $file = $model->gambar->name;
+                    if ($model->gambar->saveAs('gambar/gallery/'.$file) ){
+                        $model->gambar = $file;           
+                    }
+                }
+                $model->save(false);
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new Galery",
-                    'content'=>'<span class="text-success">Create Galery success</span>',
+                    'title'=> "Create new Gallery",
+                    'content'=>'<span class="text-success">Create Gallery success</span>',
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           
                 return [
-                    'title'=> "Create new Galery",
+                    'title'=> "Create new Gallery",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -135,7 +143,7 @@ class GaleryController extends Controller
     }
 
     /**
-     * Updates an existing Galery model.
+     * Updates an existing Gallery model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -145,7 +153,7 @@ class GaleryController extends Controller
     {
         $request = Yii::$app->request;
         $model = $this->findModel($id);       
-
+        $old_file = $model->gambar;
         if($request->isAjax){
             /*
             *   Process for ajax request
@@ -153,17 +161,28 @@ class GaleryController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update Galery #".$id,
+                    'title'=> "Update Gallery #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
+            }else if($model->load($request->post())){
+                $model->gambar = UploadedFile::getInstance($model,'gambar');
+                if($model->gambar){
+                    $file = $model->gambar->name;
+                    if ($model->gambar->saveAs('gambar/gallery/'.$file)){
+                        $model->gambar = $file;           
+                    }
+                }
+                if (empty($model->gambar)){
+                     $model->gambar = $old_file;
+                }
+                $model->save(false);
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Galery #".$id,
+                    'title'=> "Gallery #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -172,7 +191,7 @@ class GaleryController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> "Update Galery #".$id,
+                    'title'=> "Update Gallery #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -195,7 +214,7 @@ class GaleryController extends Controller
     }
 
     /**
-     * Delete an existing Galery model.
+     * Delete an existing Gallery model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -223,7 +242,7 @@ class GaleryController extends Controller
     }
 
      /**
-     * Delete multiple existing Galery model.
+     * Delete multiple existing Gallery model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -254,15 +273,15 @@ class GaleryController extends Controller
     }
 
     /**
-     * Finds the Galery model based on its primary key value.
+     * Finds the Gallery model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Galery the loaded model
+     * @return Gallery the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Galery::findOne($id)) !== null) {
+        if (($model = Gallery::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

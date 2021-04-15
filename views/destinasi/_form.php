@@ -5,7 +5,7 @@ use app\models\JenisDestinasi;
 use yii\helpers\ArrayHelper;
 use kartik\file\FileInput;
 use yii\helpers\Url;
-
+use kartik\select2\select2;
 $url = Yii::$app->urlManagerFrontEnd->baseUrl;
 
 
@@ -28,11 +28,19 @@ $url = Yii::$app->urlManagerFrontEnd->baseUrl;
 
     //use yii\helpers\ArrayHelper;
     $listData=ArrayHelper::map($jenis,'id','jenis_destinasi');
+
+    echo $form->field($model, 'jenis_id')->widget(Select2::classname(), [
+        'data' => $listData,
+        'options'=>['placeholder'=>Yii::t('app','Pilih Kelas')],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ]);
     
-    echo $form->field($model, 'jenis_id')->dropDownList(
-            $listData,
-            ['prompt'=>'Pilih...']
-            )->label("Kategori");
+    // echo $form->field($model, 'jenis_id')->dropDownList(
+    //         $listData,
+    //         ['prompt'=>'Pilih...']
+    //         )->label("Kategori");
 
     ?>
 

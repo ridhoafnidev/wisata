@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Galery */
+/* @var $model app\models\Gallery */
 ?>
-<div class="galery-update">
+<div class="gallery-update">
 
     <?= $this->render('_form', [
         'model' => $model,

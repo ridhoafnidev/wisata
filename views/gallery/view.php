@@ -3,16 +3,17 @@
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Galery */
+/* @var $model app\models\Gallery */
 ?>
-<div class="galery-view">
+<div class="gallery-view">
  
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'judul',
             'gambar',
+            'judul',
+            'createdAt',
         ],
     ]) ?>
 

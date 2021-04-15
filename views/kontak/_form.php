@@ -11,13 +11,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'judul')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pesan')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'deskripsi')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'createdAt')->textInput() ?>
 
   
 	<?php if (!Yii::$app->request->isAjax){ ?>

@@ -5,20 +5,21 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "galery".
+ * This is the model class for table "gallery".
  *
  * @property int $id
- * @property string $judul
  * @property string $gambar
+ * @property string $judul
+ * @property string $createdAt
  */
-class Galery extends \yii\db\ActiveRecord
+class Gallery extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'galery';
+        return 'gallery';
     }
 
     /**
@@ -27,8 +28,9 @@ class Galery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['judul', 'gambar'], 'required'],
-            [['judul', 'gambar'], 'string', 'max' => 100],
+            [['gambar', 'judul'], 'required'],
+            [['createdAt'], 'safe'],
+            [['gambar', 'judul'], 'string', 'max' => 100],
         ];
     }
 
@@ -39,8 +41,9 @@ class Galery extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'judul' => 'Judul',
             'gambar' => 'Gambar',
+            'judul' => 'Judul',
+            'createdAt' => 'Created At',
         ];
     }
 }

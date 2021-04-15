@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Kontak;
+use app\models\Gallery;
 
 /**
- * KontakSearch represents the model behind the search form about `app\models\Kontak`.
+ * GallerySearch represents the model behind the search form about `app\models\Gallery`.
  */
-class KontakSearch extends Kontak
+class GallerySearch extends Gallery
 {
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class KontakSearch extends Kontak
     {
         return [
             [['id'], 'integer'],
-            [['email', 'nama', 'deskripsi', 'createdAt'], 'safe'],
+            [['gambar', 'judul', 'createdAt'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class KontakSearch extends Kontak
      */
     public function search($params)
     {
-        $query = Kontak::find();
+        $query = Gallery::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -60,9 +60,8 @@ class KontakSearch extends Kontak
             'createdAt' => $this->createdAt,
         ]);
 
-        $query->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'nama', $this->nama])
-            ->andFilterWhere(['like', 'deskripsi', $this->deskripsi]);
+        $query->andFilterWhere(['like', 'gambar', $this->gambar])
+            ->andFilterWhere(['like', 'judul', $this->judul]);
 
         return $dataProvider;
     }

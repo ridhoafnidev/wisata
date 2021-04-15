@@ -149,13 +149,13 @@ class EventController extends Controller
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @return mixed
+     * @return mixed 
      */
     public function actionUpdate($id)
     {
         $request = Yii::$app->request;
         $model = $this->findModel($id);       
-
+        $old_file = $model->gambar;
         if($request->isAjax){
             /*
             *   Process for ajax request

@@ -8,10 +8,10 @@ use Yii;
  * This is the model class for table "kontak".
  *
  * @property int $id
- * @property string $nama
  * @property string $email
- * @property string $judul
- * @property string $pesan
+ * @property string $nama
+ * @property string $deskripsi
+ * @property string $createdAt
  */
 class Kontak extends \yii\db\ActiveRecord
 {
@@ -29,9 +29,10 @@ class Kontak extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama', 'email', 'judul', 'pesan'], 'required'],
-            [['pesan'], 'string'],
-            [['nama', 'email', 'judul'], 'string', 'max' => 100],
+            [['email', 'nama', 'deskripsi'], 'required'],
+            [['deskripsi'], 'string'],
+            [['createdAt'], 'safe'],
+            [['email', 'nama'], 'string', 'max' => 100],
         ];
     }
 
@@ -42,10 +43,10 @@ class Kontak extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nama' => 'Nama',
             'email' => 'Email',
-            'judul' => 'Judul',
-            'pesan' => 'Pesan',
+            'nama' => 'Nama',
+            'deskripsi' => 'Deskripsi',
+            'createdAt' => 'Created At',
         ];
     }
 }

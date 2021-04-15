@@ -11,10 +11,10 @@ use yii\widgets\DetailView;
         'model' => $model,
         'attributes' => [
             'id',
-            'nama',
             'email:email',
-            'judul',
-            'pesan:ntext',
+            'nama',
+            'deskripsi:ntext',
+            'createdAt',
         ],
     ]) ?>
 

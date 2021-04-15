@@ -57,6 +57,7 @@ AppAsset::register($this);
                     <div class="col-lg-12">
 
                         <?= $content ?>
+                        
                     </div>
                 </div>
             </div>

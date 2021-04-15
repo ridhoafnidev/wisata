@@ -16,11 +16,15 @@ return [
     // ],
     [
         'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'gambar',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'judul',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'gambar',
+        'attribute'=>'createdAt',
     ],
     [
         'class' => 'kartik\grid\ActionColumn',

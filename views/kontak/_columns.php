@@ -16,19 +16,19 @@ return [
     // ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'nama',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'email',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'judul',
+        'attribute'=>'nama',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'pesan',
+        'attribute'=>'deskripsi',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'createdAt',
     ],
     [
         'class' => 'kartik\grid\ActionColumn',
